@@ -5,3 +5,23 @@ No HTML or JavaScript programming needed, just basic Markdown knowledge which is
 
 ## How's it work?
 It's super simple, just copy the index.html file into your repository. As long as you have GitHub Pages enabled in the repo's Settings tab, GitHub will display index.html for front-end users.
+
+### Capabilities
+Basic styling including italics and other emphases are supported but code highlighting is covered as well.
+```
+jQuery(document).ready(function() {
+
+    // start by loading README.md
+    console.log('here');
+    $.ajax({
+        url: "README.md",
+        dataType: "text",
+        success : function (data) {
+            console.log('data here');
+            render(data);
+        }
+    }).error(function(e) {
+        console.log('Error on ajax return.');
+    });
+});
+```
