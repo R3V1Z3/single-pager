@@ -1,15 +1,15 @@
 # Single-Pager
-Single page website using Markdown. This project is just a single index.html file that pulls content from this `README` and renders it. It's built for use with GitHub Pages.  
+Single page website using Markdown. This project is just a single index.html file that pulls content from a `README` file and renders it using [Markdownit](https://github.com/markdown-it/markdown-it). It's built for use with [GitHub Pages](https://pages.github.com/).
 
-No HTML or JavaScript programming needed, just basic Markdown knowledge which is as simple as plain text. Simply edit the contents of this `README` file and changes will be reflected instantly when viewing through GitHub Pages.
+## How to use it?
+It's super simple, just fork the repo and edit the `README` file as needed. Or copy the index.html file into an existing repo. As long as you have GitHub Pages enabled in the `Settings` tab, GitHub will ue index.html for front-end viewers.
 
-## How's it work?
-It's super simple, just copy the index.html file into your repository. As long as you have GitHub Pages enabled in the repo's Settings tab, GitHub will display index.html for front-end users.
-
-### Capabilities
-Basic styling including italics and other emphases are supported but code highlighting is covered as well.
+## Features
+Besides basic styling, code highlighting is supported using standard Markdown code symbols.
 ```javascript
 for( i = 0; i < 10; i++ ) {
     console.log(i);
 }
 ```
+
+Source at GitHub: https://github.com/Ugotsta/single-pager
