@@ -8,20 +8,8 @@ It's super simple, just copy the index.html file into your repository. As long a
 
 ### Capabilities
 Basic styling including italics and other emphases are supported but code highlighting is covered as well.
-```
-jQuery(document).ready(function() {
-
-    // start by loading README.md
-    console.log('here');
-    $.ajax({
-        url: "README.md",
-        dataType: "text",
-        success : function (data) {
-            console.log('data here');
-            render(data);
-        }
-    }).error(function(e) {
-        console.log('Error on ajax return.');
-    });
-});
+```javascript
+for( i = 0; i < 10; i++ ) {
+    console.log(i);
+}
 ```
