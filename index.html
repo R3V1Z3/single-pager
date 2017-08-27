@@ -7,6 +7,9 @@
 
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/markdown-it/7.0.0/markdown-it.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="//gitcdn.xyz/repo/mixu/markdown-styles/master/layouts/jasonm23-dark/assets/style.css">
 
     <title>Main</title>
 
@@ -17,23 +20,49 @@
 
 <body id="custom">
     <div id="wrapper">
+        <div id="content"></div>
     </div>
-    <script src="js/script.js">
-      jQuery(document).ready(function() {
-
-          // allow custom Gist
-          var gist = params.get('gist');
-          var filename = params.get('filename');
-
-          // start by loading README.md
-          $.ajax({
-              url : "README.md",
-              dataType: "text",
-              success : function (data) {
-                      su_render(data);
-                  }
-              }
-          });
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+        
+            // start by loading README.md
+            console.log('here');
+            $.ajax({
+                url: "README.md",
+                dataType: "text",
+                success : function (data) {
+                    console.log('data here');
+                    render(data);
+                }
+            }).error(function(e) {
+                console.log('Error on ajax return.');
+            });
+            
+            // render README.md contents using Mardownit
+            function render(data) {
+                var md = window.markdownit({
+                    html: false, // Enable HTML tags in source
+                    xhtmlOut: true, // Use '/' to close single tags (<br />).
+                    breaks: true, // Convert '\n' in paragraphs into <br>
+                    langPrefix: 'language-', // CSS language prefix for fenced blocks.
+                    linkify: true,
+                    typographer: true,
+                    quotes: '“”‘’',
+                    highlight: function(str, lang) {
+                        if (lang && hljs.getLanguage(lang)) {
+                            try {
+                                return '<pre class="hljs"><code>' +
+                                    hljs.highlight(lang, str, true).value +
+                                    '</code></pre>';
+                            }
+                            catch (__) {}
+                        }
+                        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+                    }
+                });
+                $('#content').html( md.render(data) );
+            }
+          
         });
     </script>
 </body>
